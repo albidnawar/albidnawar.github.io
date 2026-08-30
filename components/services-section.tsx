@@ -1,0 +1,96 @@
+import { Mail } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import Image from "next/image"
+
+export function ServicesSection() {
+  const services = [
+    {
+      title: "Product Management",
+      description: "End-to-end product strategy, requirements gathering, SRS documentation, roadmap planning, and stakeholder coordination.",
+      image: "/images/web-design.svg",
+    },
+    {
+      title: "Data & Analytics",
+      description: "Operational data analysis, KPI modeling, performance insights, POSM tracking, and process optimization.",
+      image: "/images/motion-graphics.svg",
+    },
+    {
+      title: "UI/UX & Product Design",
+      description: "User research, wireframing, high-fidelity prototyping, and component-based interface design using Figma.",
+      image: "/images/product-design.svg",
+    },
+    {
+      title: "Technical & Development",
+      description: "React, Python, SQL, REST APIs, JavaScript, TypeScript, Git, and modern web development concepts.",
+      image: "/images/Gemini_Generated_Image_7wof787wof787wpp.png",
+      imageBg: "bg-[#EFEFEE]",
+    },
+    {
+      title: "Business & Client Management",
+      description: "Client communication, requirement analysis, solution scoping, onboarding, technical demonstrations, and cross-functional collaboration.",
+      image: "/images/user-research.svg",
+    },
+  ]
+
+  return (
+    <section className="bg-white py-16 md:py-24">
+      <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-4xl md:text-[52px] md:leading-[60px] font-bold mb-4">
+              My broad <span className="bg-[#FF4A60] text-white px-3 py-1 inline-block">set of services</span>
+            </h2>
+            <p className="text-[#393939] text-base md:text-lg font-medium leading-relaxed md:leading-[30px] max-w-2xl mx-auto">
+Product strategy, data-driven insights, intuitive design, and technical solutions crafted to turn complex challenges into meaningful outcomes.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="bg-white border-[3px] border-black rounded-[32px] overflow-hidden hover:translate-y-[-4px] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 min-h-[480px] flex flex-col group"
+              >
+                <div
+                  className={`mb-6 -mx-[3px] -mt-[3px] overflow-hidden rounded-t-[29px] ${service.imageBg || ""}`}
+                >
+                  <Image
+                    src={service.image || "/placeholder.svg"}
+                    alt={service.title}
+                    width={382}
+                    height={328}
+                    className="w-full h-auto rounded-t-[29px] scale-100 group-hover:scale-105 transition-transform duration-500 ease-out"
+                  />
+                </div>
+                <div className="px-8 pb-8 flex-1 flex flex-col">
+                  <h3 className="text-[28px] leading-[40px] font-bold mb-3 text-[#0B0B0B]">{service.title}</h3>
+                  <p className="text-[18px] leading-[30px] font-medium text-[#393939]">{service.description}</p>
+                </div>
+              </div>
+            ))}
+
+            <div className="bg-[#FFC224] border-[3px] border-black rounded-[32px] p-8 md:p-12 flex flex-col items-center justify-center text-center hover:translate-y-[-4px] transition-transform min-h-[480px] relative shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="mb-8">
+                <Image
+                  src="/images/get-in-touch.svg"
+                  alt="Get in touch"
+                  width={92}
+                  height={92}
+                  className="w-[92px] h-[92px]"
+                />
+              </div>
+              <h3 className="text-[28px] leading-[40px] font-bold mb-4 text-[#0B0B0B]">Get in touch</h3>
+              <p className="text-[18px] leading-[30px] font-medium text-[#393939] mb-8">
+                Looking for another service? Get in touch with me, there is a high chance that I will be able to help!
+              </p>
+              <Button className="bg-black text-white hover:bg-black/90 rounded-[16px] px-12 py-6 font-medium text-[18px] w-full max-w-[340px] h-[64px]">
+                <Mail className="w-5 h-5 mr-2" />
+                Get in touch
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
