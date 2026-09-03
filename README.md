@@ -1,49 +1,47 @@
-# Cooked this Paperfolio template with V0 | Here’s the template you can use for free
+# Albid Nawar — Portfolio
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://v0.link/nikhil-shukla)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.link/paperfolio)
+Personal portfolio site for **Albid Nawar**, AI Product Manager, showcasing product, data, design, and technical work.
 
-![Paperfolio Template Preview](https://global.discourse-cdn.com/vercel/original/2X/e/e8a5d554ecf92e4adb4a718138c60ad7e0c7510e.png)
+**Live site:** https://albidnawar.github.io
 
-I’ve been experimenting with **V0 - by Vercel**, and I rebuilt the popular **Paperfolio** layout originally created by **Brix Templates**.
-This is a community-made clone — all ownership of the original design stays with @brixtemplatesbrixtemplates.
-My goal was simply to recreate it in V0 so anyone can use or remix it.
+## Sections
 
----
+- **Home** — intro and quick links to get in touch or view work
+- **About** — background and highlights
+- **Experience** — work history and resume download
+- **Portfolio** — selected projects and case studies
+- **Contact** — email, social links, and a message form
 
-## Live Demo & Template Access
+## Tech Stack
 
-**→  Template (Clone / Remix):** https://v0.link/paperfolio
+- [Next.js](https://nextjs.org/) 15 (App Router, static export)
+- [React](https://react.dev/) 19 + TypeScript
+- [Tailwind CSS](https://tailwindcss.com/) 4
+- [shadcn/ui](https://ui.shadcn.com/) components on top of Radix UI
+- [Formspree](https://formspree.io/) for the contact form
+- Deployed to [GitHub Pages](https://pages.github.com/) via GitHub Actions
 
-**→  Live Preview:** https://v0-paperfolio.vercel.app
+## Getting Started
 
----
+Install dependencies and run the dev server:
 
-## Video Walkthrough
+```bash
+pnpm install
+pnpm dev
+```
 
-**→ Watch the walkthrough on X:**
-[https://x.com/i/status/1994130537464910310](https://x.com/i/status/1994130537464910310)
+Open [http://localhost:3000](http://localhost:3000) to view it locally.
 
----
+## Build
 
-## What’s Inside the Template
+```bash
+pnpm build
+```
 
-* Clean portfolio with hero section and highlight-style text blocks
-* Minimal, bold layout focused on showcasing your work
-* Reusable components built directly in V0
-* Easy to customize for personal portfolios or client sites
+This produces a static export in `out/`, deployed automatically to GitHub Pages on push to `main` (see `.github/workflows/deploy.yml`).
 
----
+## Contact
 
-## How to Use It
-
-1. Open the template → https://v0.link/paperfolio
-2. Click on “Open in V0”
-3. Make your styling tweaks
-4. Deploy on Vercel
-
-That’s it — you have a clean, modern portfolio site ready to ship.
-
----
-
-If you end up customizing this, I’d like to see what you build.
+- Email: [albidnawar@gmail.com](mailto:albidnawar@gmail.com)
+- LinkedIn: [linkedin.com/in/albidnawar](https://www.linkedin.com/in/albidnawar/)
+- GitHub: [github.com/albidnawar](https://github.com/albidnawar)
