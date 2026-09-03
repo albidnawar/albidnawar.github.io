@@ -10,6 +10,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mjyvrlvp"
 
 export function Footer() {
   const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle")
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -22,6 +23,7 @@ export function Footer() {
         body: (() => {
           const formData = new FormData()
           formData.append("email", email)
+          formData.append("message", message)
           formData.append("_subject", "New message from portfolio site")
           return formData
         })(),
@@ -29,6 +31,7 @@ export function Footer() {
       if (res.ok) {
         setStatus("sent")
         setEmail("")
+        setMessage("")
       } else {
         setStatus("error")
       }
@@ -55,9 +58,9 @@ export function Footer() {
 
               <form
                 onSubmit={handleSubmit}
-                className="w-full flex-1 bg-white border-4 border-black rounded-3xl py-4 px-4 md:py-6 md:px-8 flex flex-col md:flex-row items-center gap-4 md:gap-6"
+                className="w-full flex-1 bg-white border-4 border-black rounded-3xl py-4 px-4 md:py-6 md:px-8 flex flex-col gap-4"
               >
-                <div className="flex-1 text-center md:text-left">
+                <div className="text-center md:text-left">
                   <h3 className="text-xl md:text-2xl font-bold text-black">Send me a message</h3>
                   {status === "sent" && (
                     <p className="text-sm text-green-600 font-semibold mt-1">Thanks! I'll get back to you soon.</p>
@@ -69,23 +72,32 @@ export function Footer() {
                   )}
                 </div>
 
-                <div className="relative w-full md:w-auto md:min-w-[400px] lg:min-w-[480px]">
+                <div className="flex flex-col md:flex-row gap-4">
                   <Input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
-                    className="border-4 border-black rounded-xl px-4 md:px-6 h-14 md:h-16 pr-32 md:pr-44 text-base md:text-lg text-gray-800 placeholder:text-gray-500"
+                    className="border-4 border-black rounded-xl px-4 md:px-6 h-14 text-base md:text-lg text-gray-800 placeholder:text-gray-500 md:flex-1"
                   />
                   <Button
                     type="submit"
                     disabled={status === "sending"}
-                    className="absolute right-2 top-2 bottom-2 bg-black text-white hover:bg-black/90 rounded-[10px] px-6 md:px-10 text-sm md:text-base font-semibold whitespace-nowrap h-auto disabled:opacity-60"
+                    className="bg-black text-white hover:bg-black/90 rounded-[10px] px-6 md:px-10 text-sm md:text-base font-semibold whitespace-nowrap h-14 disabled:opacity-60"
                   >
                     {status === "sending" ? "Sending..." : "Send"}
                   </Button>
                 </div>
+
+                <textarea
+                  required
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Type your message..."
+                  rows={3}
+                  className="w-full border-4 border-black rounded-xl px-4 md:px-6 py-3 text-base md:text-lg text-gray-800 placeholder:text-gray-500 resize-none outline-none"
+                />
               </form>
             </div>
           </div>
