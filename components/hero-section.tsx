@@ -20,7 +20,7 @@ I turn ideas into meaningful products through strategy, design, technology, and 
               asChild
               className="bg-[#0B0B0B] text-white hover:bg-black/90 rounded-lg py-5 px-8 md:py-[22px] md:px-[62px] text-base md:text-lg font-semibold h-auto w-full sm:w-auto sm:min-w-[240px]"
             >
-              <a href="mailto:albid.nawar@thedataisland.com">
+              <a href="/contact">
                 <Mail className="w-5 h-5" />
                 Get in touch
               </a>
