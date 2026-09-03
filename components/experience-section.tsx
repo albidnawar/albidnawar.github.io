@@ -28,7 +28,7 @@ export function ExperienceSection() {
   ]
 
   return (
-    <section className="bg-black py-16 md:py-24">
+    <section id="experience" className="bg-black py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
           <div className="text-white pt-0 md:pt-12 md:sticky md:top-12 self-start">
