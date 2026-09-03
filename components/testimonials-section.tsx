@@ -13,8 +13,7 @@ export function TestimonialsSection() {
             about <span className="bg-[#2F81F7] text-white px-3 py-1 inline-block">my work</span>
           </h2>
           <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto pb-8">
-            Lacus, adipiscing lectus convallis purus aliquet cursus magnaol montes augue donec cras turpis ultrices
-            nulla sed doler.
+            Feedback from the stakeholders and teams I've worked with on delivering high-impact products.
           </p>
         </div>
 
@@ -33,13 +32,13 @@ export function TestimonialsSection() {
 
               <div className="md:max-w-[65%]">
                 <p className="text-sm md:text-base lg:text-lg mb-6 leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim et minim quis nostrud exercitation ullamco laboris.
+                  "Albid took ownership of the uLens project from requirements to launch, effectively coordinating
+                  stakeholders and the development team while ensuring successful delivery."
                 </p>
 
                 <div>
-                  <div className="font-bold text-base md:text-lg">Lily Woods</div>
-                  <div className="text-gray-600 text-sm md:text-base">VP of Design at Google</div>
+                  <div className="font-bold text-base md:text-lg">Tanzia Munir</div>
+                  <div className="text-gray-600 text-sm md:text-base">Shopper Marketing Manager, Unilever</div>
                 </div>
               </div>
             </div>
