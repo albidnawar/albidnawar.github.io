@@ -22,6 +22,9 @@ export function Navigation() {
           <a href="/#portfolio" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity">
             Portfolio
           </a>
+          <a href="/contact" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity">
+            Contact
+          </a>
         </div>
 
         <Button asChild className="bg-black text-white hover:bg-black/90 rounded-sm px-5 h-12 min-w-[48px] flex-shrink-0">
