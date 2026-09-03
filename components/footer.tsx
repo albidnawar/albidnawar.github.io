@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Instagram, Youtube, Linkedin, Mail, Phone } from "lucide-react"
+import { Facebook, Twitter, Instagram, Github, Linkedin, Mail, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Image from "next/image"
@@ -58,31 +58,41 @@ export function Footer() {
               </p>
               <div className="flex gap-3">
                 <a
-                  href="#"
+                  href="https://www.facebook.com/nawar.albid"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-[#2F81F7] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
                 >
                   <Facebook className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://x.com/NawarAlbid"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-[#2F81F7] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
                 >
                   <Twitter className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/albid.n"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-[#FF6B7A] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
                 >
                   <Instagram className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://github.com/albidnawar"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-[#FF6B7A] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
                 >
-                  <Youtube className="w-5 h-5" />
+                  <Github className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/albidnawar/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-[#FF6B7A] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
                 >
                   <Linkedin className="w-5 h-5" />
