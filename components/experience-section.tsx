@@ -39,9 +39,14 @@ export function ExperienceSection() {
               From requirement gathering and SRS documentation to data-driven decision-making, here's how I've helped
               turn complex business goals into high-impact products for enterprise clients like Unilever.
             </p>
-            <Button className="bg-white text-black hover:bg-gray-50 rounded-lg py-5 px-8 md:py-[22px] md:px-[62px] text-base md:text-lg font-semibold h-auto w-full sm:w-auto sm:min-w-[240px]">
-              <FileText className="w-5 h-5" />
-              See full resume
+            <Button
+              asChild
+              className="bg-white text-black hover:bg-gray-50 rounded-lg py-5 px-8 md:py-[22px] md:px-[62px] text-base md:text-lg font-semibold h-auto w-full sm:w-auto sm:min-w-[240px]"
+            >
+              <a href="/Albid_Nawar_CV.pdf" target="_blank" rel="noopener noreferrer">
+                <FileText className="w-5 h-5" />
+                See full resume
+              </a>
             </Button>
           </div>
 
