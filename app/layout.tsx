@@ -19,9 +19,9 @@ const onest = Onest({
 })
 
 export const metadata: Metadata = {
-  title: "Paperfolio - Portfolio Landing Page",
-  description: "A playful portfolio landing page",
-  generator: "v0.app",
+  title: "Albid Nawar - Product Manager",
+  description:
+    "AI Product Manager turning ideas into impact through product strategy, data-driven decisions, and design.",
 }
 
 export default function RootLayout({
