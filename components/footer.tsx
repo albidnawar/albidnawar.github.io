@@ -190,8 +190,8 @@ export function Footer() {
               <ul className="space-y-3 text-gray-400 text-sm">
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
-                  <a href="mailto:albid.nawar@thedataisland.com" className="hover:text-white transition-colors">
-                    albid.nawar@thedataisland.com
+                  <a href="mailto:albidnawar@gmail.com" className="hover:text-white transition-colors">
+                    albidnawar@gmail.com
                   </a>
                 </li>
                 <li className="flex items-center gap-2">

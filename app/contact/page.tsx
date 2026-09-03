@@ -6,8 +6,8 @@ import { Footer } from "@/components/footer"
 const socialLinks = [
   {
     label: "Email",
-    value: "albid.nawar@thedataisland.com",
-    href: "mailto:albid.nawar@thedataisland.com",
+    value: "albidnawar@gmail.com",
+    href: "mailto:albidnawar@gmail.com",
     icon: Mail,
     color: "bg-[#FF6B7A]",
   },
@@ -99,7 +99,7 @@ export default function ContactPage() {
               asChild
               className="bg-black text-white hover:bg-black/90 rounded-[16px] px-12 py-6 font-medium text-[18px] w-full max-w-[340px] h-[64px]"
             >
-              <a href="mailto:albid.nawar@thedataisland.com">
+              <a href="mailto:albidnawar@gmail.com">
                 <Mail className="w-5 h-5 mr-2" />
                 Email me
               </a>
