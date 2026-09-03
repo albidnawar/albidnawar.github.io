@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, type FormEvent } from "react"
+import { usePathname } from "next/navigation"
 import { Facebook, Twitter, Instagram, Github, Linkedin, Mail, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,6 +10,9 @@ import Image from "next/image"
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mjyvrlvp"
 
 export function Footer() {
+  const pathname = usePathname()
+  const isHome = pathname === "/"
+  const anchor = (id: string) => (isHome ? `#${id}` : `/#${id}`)
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle")
@@ -158,22 +162,22 @@ export function Footer() {
               <h3 className="font-bold mb-4">Pages</h3>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li>
-                  <a href="/#home" className="hover:text-white transition-colors">
+                  <a href={anchor("home")} className="hover:text-white transition-colors">
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="/#about" className="hover:text-white transition-colors">
+                  <a href={anchor("about")} className="hover:text-white transition-colors">
                     About
                   </a>
                 </li>
                 <li>
-                  <a href="/#experience" className="hover:text-white transition-colors">
+                  <a href={anchor("experience")} className="hover:text-white transition-colors">
                     Experience
                   </a>
                 </li>
                 <li>
-                  <a href="/#portfolio" className="hover:text-white transition-colors">
+                  <a href={anchor("portfolio")} className="hover:text-white transition-colors">
                     Portfolio
                   </a>
                 </li>
