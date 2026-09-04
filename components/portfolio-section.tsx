@@ -1,27 +1,9 @@
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
+import { caseStudies } from "@/lib/case-studies"
 
 export function PortfolioSection() {
-  const projects = [
-    {
-      title: "Studio user research and analysis",
-      description:
-        "In ultricies viverra sed at hendrerit drogon nunc scelerisque nisl pellentesque et dignissim at aenean tempor adipiscing eget mi diam at tempus.",
-      tag: "UI/UX Design",
-      logo: "/images/studio-logo.svg",
-      bgColor: "bg-[#6366F1]",
-      illustration: "/images/studio-workspace.svg",
-    },
-    {
-      title: "Venture Workspace web app redesign",
-      description:
-        "In ultricies viverra sed at hendrerit drogon nunc scelerisque nisl pellentesque et dignissim at aenean tempor adipiscing eget mi diam at tempus.",
-      tag: "UI/UX Design",
-      logo: "/images/venture-logo.svg",
-      bgColor: "bg-[#2F81F7]",
-      illustration: "/images/venture-workspace.svg",
-    },
-  ]
+  const projects = caseStudies
 
   return (
     <section id="portfolio" className="container mx-auto px-4 py-16 md:py-24">
@@ -34,9 +16,9 @@ export function PortfolioSection() {
         </div>
 
         <div className="space-y-8 mb-12">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <div
-              key={index}
+              key={project.slug}
               className="group grid md:grid-cols-2 bg-white border-[3px] border-black rounded-[32px] overflow-hidden hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all"
             >
               <div className="p-6 md:p-12 flex flex-col justify-center bg-white">
@@ -63,7 +45,7 @@ export function PortfolioSection() {
                 </p>
 
                 <a
-                  href="#"
+                  href={`/portfolio/${project.slug}`}
                   className="flex items-center gap-2 font-semibold text-[#0B0B0B] hover:gap-3 transition-all text-sm md:text-base"
                 >
                   View case study
