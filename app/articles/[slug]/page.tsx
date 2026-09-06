@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import { ArticleContent } from "@/components/article-content"
 import { articles, getArticle } from "@/lib/articles"
 
 export function generateStaticParams() {
@@ -87,13 +88,7 @@ export default async function ArticlePage({
 
       <section className="container mx-auto px-4 py-8 md:py-12">
         <div className="max-w-5xl mx-auto bg-white border-[3px] border-black rounded-[32px] p-8 md:p-12">
-          <div className="max-w-3xl space-y-6">
-            {article.content.map((paragraph, index) => (
-              <p key={index} className="text-[#393939] leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
-          </div>
+          <ArticleContent blocks={article.content} />
         </div>
       </section>
 
