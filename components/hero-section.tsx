@@ -5,10 +5,13 @@ export function HeroSection() {
   return (
     <section id="home" className="container mx-auto px-4 py-16 md:py-24">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6">
-          <h1 className="text-[42px] leading-[50px] md:text-[72px] font-bold md:leading-[85px]">
-            I'm <span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block">Albid Nawar</span>, a Product Manager{" "}
-            <span className="bg-[#2F81F7] text-white px-3 py-1 inline-block text-[34px] md:text-[58px]">Turning Ideas into Impact.</span>
+        <div className="space-y-6 min-w-0">
+          <h1 className="text-[28px] leading-[36px] sm:text-[44px] sm:leading-[52px] md:text-[32px] md:leading-[40px] lg:text-[44px] lg:leading-[54px] xl:text-[58px] xl:leading-[70px] 2xl:text-[72px] 2xl:leading-[85px] font-bold">
+            I'm <span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block">Albid Nawar</span>,{" "}
+            <span className="whitespace-nowrap">a Product Manager</span>{" "}
+            <span className="bg-[#2F81F7] text-white px-3 py-1 inline-block whitespace-nowrap text-[18px] leading-[26px] sm:text-[40px] sm:leading-[50px] md:text-[21px] md:leading-[30px] lg:text-[30px] lg:leading-[40px] xl:text-[40px] xl:leading-[50px] 2xl:text-[49px] 2xl:leading-[60px]">
+              Turning Ideas into Impact.
+            </span>
           </h1>
 
           <p className="text-[#393939] text-[16px] md:text-[18px] font-medium leading-[28px] md:leading-[30px] max-w-xl">
