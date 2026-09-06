@@ -112,6 +112,34 @@ export default async function CaseStudyPage({
         </div>
       </section>
 
+      {project.impact && (
+        <section className="container mx-auto px-4 py-8 md:py-12">
+          <div className="max-w-5xl mx-auto bg-white border-[3px] border-black rounded-[32px] p-8 md:p-12">
+            <h2 className="text-xl md:text-2xl font-bold mb-6 text-[#0B0B0B]">Business impact</h2>
+            <div className="overflow-x-auto -mx-2 px-2">
+              <table className="w-full min-w-[560px] border-collapse">
+                <thead>
+                  <tr className="bg-black text-white">
+                    <th className="text-left text-sm md:text-base font-semibold px-4 py-3 rounded-l-xl">Operational area</th>
+                    <th className="text-left text-sm md:text-base font-semibold px-4 py-3">Legacy workflow</th>
+                    <th className="text-left text-sm md:text-base font-semibold px-4 py-3 rounded-r-xl">With U-lens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {project.impact.map((row) => (
+                    <tr key={row.area} className="border-b-2 border-black last:border-b-0">
+                      <td className="px-4 py-4 font-bold text-sm md:text-base text-[#0B0B0B] align-top">{row.area}</td>
+                      <td className="px-4 py-4 text-sm md:text-base text-[#393939] align-top">{row.before}</td>
+                      <td className="px-4 py-4 text-sm md:text-base font-semibold text-[#0B0B0B] align-top">{row.after}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="container mx-auto px-4 py-8 md:py-16">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6 bg-[#FFC224] border-[3px] border-black rounded-[32px] p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           <div>
