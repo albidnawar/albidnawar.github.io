@@ -57,9 +57,9 @@ export default async function CaseStudyPage({
             <Image
               src={project.logo || "/placeholder.svg"}
               alt={`${project.title} logo`}
-              width={120}
-              height={32}
-              className="h-7 md:h-8 w-auto"
+              width={200}
+              height={200}
+              className="h-20 w-20 md:h-24 md:w-24 object-contain"
             />
             <span className="inline-block bg-black text-white text-xs font-semibold px-4 py-1.5 rounded-full w-fit">
               {project.tag}
@@ -73,7 +73,7 @@ export default async function CaseStudyPage({
           </p>
 
           <div
-            className={`${project.bgColor} relative overflow-hidden min-h-[280px] md:min-h-[480px] border-[3px] border-black rounded-[32px] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]`}
+            className={`${project.bgColor} relative overflow-hidden aspect-square border-[3px] border-black rounded-[32px] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]`}
           >
             <Image src={project.illustration || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
           </div>

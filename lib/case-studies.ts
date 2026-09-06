@@ -15,15 +15,14 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    // Logo and hero illustration are placeholders until the real U-lens assets are provided.
     slug: "ulens",
     title: "U-lens: AI-Powered Retail Execution Platform",
     tag: "AI Product Management",
     description:
       "An enterprise-grade retail intelligence platform for FMCG shelf auditing, turning a single smartphone photo into real-time, verified shelf and POSM compliance across hundreds of thousands of retail touchpoints.",
-    logo: "/images/ulens-logo-placeholder.svg",
+    logo: "/images/ulens-logo.png",
     bgColor: "bg-[#6366F1]",
-    illustration: "/placeholder.svg",
+    illustration: "/images/ulens-mockup.png",
     overview:
       "For enterprise FMCG manufacturers operating in dense, fragmented retail environments, shelf visibility and trade marketing compliance are critical revenue drivers. U-lens was engineered as an enterprise-grade retail intelligence platform that eliminates audit lag and revenue leakage by combining on-device and cloud computer vision with automated field force management, converting simple smartphone photos into real-time, verified shelf intelligence.",
     challenge:

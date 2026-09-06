@@ -26,9 +26,9 @@ export function PortfolioSection() {
                   <Image
                     src={project.logo || "/placeholder.svg"}
                     alt={`${project.title} logo`}
-                    width={120}
-                    height={32}
-                    className="h-6 md:h-8 w-auto"
+                    width={160}
+                    height={160}
+                    className="h-16 w-16 md:h-20 md:w-20 object-contain"
                   />
                 </div>
 
@@ -53,7 +53,7 @@ export function PortfolioSection() {
                 </a>
               </div>
 
-              <div className={`${project.bgColor} relative overflow-hidden min-h-[250px] md:min-h-[500px]`}>
+              <div className={`${project.bgColor} relative overflow-hidden aspect-square self-stretch md:self-center`}>
                 <Image
                   src={project.illustration || "/placeholder.svg"}
                   alt={project.title}
