@@ -1,0 +1,95 @@
+# Case Study: Transforming Enterprise Retail Execution via AI-Powered Shelf Auditing
+
+**Industry:** Fast-Moving Consumer Goods (FMCG)
+
+**Project:** U-lens (Enterprise Retail Intelligence Platform)
+
+**Focus Area:** Computer Vision, Field Force Automation & Trade Marketing Compliance
+
+---
+
+### **Executive Summary**
+
+For enterprise FMCG manufacturers operating in dense, fragmented retail environments, maintaining shelf visibility and trade marketing compliance is a critical revenue driver. Traditional retail auditing relies on manual field reports, creating blind spots, delayed decision-making, and unverified promotional execution across hundreds of thousands of retail touchpoints.
+
+**U-lens** was engineered as an enterprise-grade retail intelligence platform designed to eliminate audit lag and revenue leakage. By combining on-device and cloud computer vision with automated field force management, U-lens converts simple smartphone photos into real-time, verified shelf intelligence—streamlining field operations, enforcing planogram compliance, and automating performance payouts.
+
+---
+
+### **The Challenge: The Retail Blind Spot**
+
+Prior to deploying automated retail intelligence, managing field execution across vast general-trade networks presented several operational bottlenecks:
+
+* **Manual & Biased Auditing:** Field auditors manually recorded shelf presence, Share of Shelf (SOS), and Point of Sale Materials (POSM) on paper or static forms, leading to high error rates and subjective reporting.
+* **Delayed Visibility:** HQ teams faced weeks of latency between on-the-ground execution and consolidated performance analytics, preventing real-time corrective actions.
+* **Unverified Trade Execution:** High investments in branded displays, shelf talkers, and planograms were difficult to verify at scale, resulting in misplaced or missing promotional assets.
+* **Payroll & Incentive Disputes:** Calculating performance-based incentives manually for large field teams created administrative overhead and frequent disputes over execution accuracy.
+
+---
+
+### **The Solution: U-lens Architecture**
+
+U-lens delivers an end-to-end ecosystem connecting field force agents, regional supervisors, and central brand management through three unified software layers:
+
+```
++-----------------------------------------------------------------------+
+|                         U-LENS PLATFORM                               |
++-----------------------------------+-----------------------------------+
+|  1. Merchandiser Mobile App       |  • 1-Second AI Shelf Scan         |
+|                                   |  • Dynamic Route & PJP Navigation |
+|                                   |  • Real-time On-site Feedback     |
++-----------------------------------+-----------------------------------+
+|  2. Supervisor Management App     |  • Live GPS Check-ins & Routes    |
+|                                   |  • AI Challenge Mechanism         |
+|                                   |  • Joint-Call & Coaching Logs     |
++-----------------------------------+-----------------------------------+
+|  3. Central Executive Portal      |  • Territory & User Hierarchy     |
+|                                   |  • AI Model Retraining Pipeline   |
+|                                   |  • Automated Incentive Payroll    |
++-----------------------------------------------------------------------+
+
+```
+
+#### **1. AI-Driven Shelf & POSM Intelligence**
+
+Field agents open the application, select their scheduled Permanent Journey Plan (PJP) route, and snap a single photo of the retail shelf.
+
+* **Multi-SKU Recognition:** Advanced computer vision models detect and segment hundreds of individual SKUs simultaneously, calculating Share of Shelf (SOS) percentages in real time.
+* **POSM Verification:** Automated detection checks for the presence, condition, and correct placement of brand display items (standees, shelf talkers, danglers).
+* **Exclusivity Rules:** The system automatically flags competitor encroachments into restricted or contracted display zones.
+
+#### **2. Supervisor Quality Control & AI Feedback Loop**
+
+* **GPS Check-in Validation:** Ensures agents perform audits physically inside assigned stores using verified location tags and photo proof.
+* **AI Challenge Mechanism:** Supervisors can review "Success/Failed" automated audits and submit manual challenge logs with detailed feedback, feeding directly into continuous model retraining.
+
+#### **3. Centralized Command Center & Payroll Automation**
+
+* **Live Coverage Analytics:** Central dashboards display real-time territorial coverage, store-by-store audit histories, and compliance heatmaps.
+* **Automated Incentive Payroll:** Performance metrics auto-calculate based solely on verified execution data, removing manual inputs and eliminating month-end payout friction.
+
+---
+
+### **Key Features & Technical Highlights**
+
+* **Sub-Second Inferencing:** Fast image processing generates instant visual bounding boxes and share-of-shelf charts directly on the agent's screen.
+* **Offline-First Capabilities:** Field agents can capture and log data in low-connectivity rural zones, auto-syncing seamlessly once back online.
+* **Dynamic Journey Planning:** Administrators can re-route daily targets, assign dynamic schedules, and push immediate planogram updates to thousands of devices instantly.
+* **Standardized Data Hygiene:** Centralized data pipelines ensure uniform data formatting (e.g., standardized lowercase email constraints and unified SKU naming conventions) across all exportable business intelligence reports.
+
+---
+
+### **Business Impact & Results**
+
+| Operational Area | Legacy Workflow | With U-lens Platform |
+| --- | --- | --- |
+| **Audit Speed** | 10–15 minutes per store (manual logging) | **Under 1 second** per shelf scan |
+| **Data Integrity** | Subjective, unverified paper/form entries | **98%+ Accuracy** via computer vision |
+| **Visibility Latency** | 1–2 weeks for consolidated HQ reports | **Real-time** dashboard streaming |
+| **Incentive Calculation** | Manual processing prone to disputes | **100% Automated** based on verified photo data |
+
+---
+
+### **Conclusion**
+
+The deployment of the **U-lens** platform transformed retail execution from a reactive, estimate-driven process into a data-backed operational system. By bridging the gap between field agents and headquarters through automated computer vision, the platform gives enterprise brands complete operational control, verified display compliance, and measurable financial savings.
