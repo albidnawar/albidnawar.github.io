@@ -1,6 +1,6 @@
 # How We Built U-Lens: Turning 45,000 Daily Store Scans into Absolute Retail Control
 
-As a product manager, there is a specific kind of chaos you only encounter when building software for general trade retail in emerging markets.
+As a senior product analyst, there is a specific kind of chaos you only encounter when building software for general trade retail in emerging markets.
 
 Picture hundreds of thousands of micro-stores scattered across dense urban alleys and remote rural roads. Millions of dollars poured into point-of-sale materials (POSM), shelf displays, and field force incentives. And at the center of it all, a fundamental management nightmare: **the retail blind spot**.
 

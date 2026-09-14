@@ -19,9 +19,9 @@ const onest = Onest({
 })
 
 export const metadata: Metadata = {
-  title: "Albid Nawar - Product Manager",
+  title: "Albid Nawar - Senior Product Analyst",
   description:
-    "AI Product Manager turning ideas into impact through product strategy, data-driven decisions, and design.",
+    "AI Senior Product Analyst turning ideas into impact through product strategy, data-driven decisions, and design.",
 }
 
 export default function RootLayout({

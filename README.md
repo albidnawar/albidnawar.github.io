@@ -1,6 +1,6 @@
 # Albid Nawar — Portfolio
 
-Personal portfolio site for **Albid Nawar**, AI Product Manager, showcasing product, data, design, and technical work.
+Personal portfolio site for **Albid Nawar**, AI Senior Product Analyst, showcasing product, data, design, and technical work.
 
 **Live site:** https://albidnawar.github.io
 

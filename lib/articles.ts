@@ -22,7 +22,7 @@ export const articles: Article[] = [
     authorImage: "/images/design-mode/63407fbdc2d4ac5270385fd4_home-he.png",
     date: "Aug 12, 2026",
     content: [
-      "As a product manager, there is a specific kind of chaos you only encounter when building software for general trade retail in emerging markets.",
+      "As a senior product analyst, there is a specific kind of chaos you only encounter when building software for general trade retail in emerging markets.",
       "Picture hundreds of thousands of micro-stores scattered across dense urban alleys and remote rural roads. Millions of dollars poured into point-of-sale materials (POSM), shelf displays, and field force incentives. And at the center of it all, a fundamental management nightmare: **the retail blind spot**.",
       "Historically, FMCG executives, trade marketing managers, and regional leads made multi-million-dollar distribution decisions based on static paper forms, manual Excel dumps, and self-reported field audits. The operational leakage was staggering — costing brands upwards of $50,000 a month across large store networks in unverified displays, misplaced inventory, and biased reporting.",
       "When we set out to build **U-Lens** at The Data Island, our directive was simple to state, yet immensely complex to engineer: eliminate the guesswork, and convert raw, in-store smartphone photos into real-time operational command.",

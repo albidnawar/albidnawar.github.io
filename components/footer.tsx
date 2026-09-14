@@ -112,7 +112,7 @@ export function Footer() {
                 <span className="text-lg md:text-xl font-bold">Albid Nawar</span>
               </div>
               <p className="text-gray-400 mb-6 text-sm leading-relaxed">
-                AI Product Manager turning ideas into impact through product strategy, data, and design.
+                AI Senior Product Analyst turning ideas into impact through product strategy, data, and design.
               </p>
               <div className="flex gap-3">
                 <a
