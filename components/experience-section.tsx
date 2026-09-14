@@ -6,7 +6,7 @@ export function ExperienceSection() {
   const experiences = [
     {
       period: "Jan 2026 - Present",
-      title: "AI Senior Product Analyst — The Data Island",
+      title: "Senior Product Analyst — The Data Island",
       description:
         "Authored end-to-end SRS for Unilever's ULens app and portal, analyzed 800,000+ operational data points, and managed retail execution, POSM allocation, and client onboarding.",
       icon: "/images/agency.png",
