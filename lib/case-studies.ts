@@ -11,6 +11,7 @@ export type CaseStudy = {
   solution: string
   highlights: { title: string; description: string; color: string }[]
   impact?: { area: string; before: string; after: string }[]
+  gallery?: { src: string; alt: string; caption: string }[]
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -59,30 +60,83 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: "venture-workspace-web-app-redesign",
-    title: "Venture Workspace web app redesign",
-    tag: "UI/UX Design",
+    slug: "aingpt",
+    title: "AinGPT: AI-powered legal help marketplace",
+    tag: "Product Design & Full-Stack Development",
     description:
-      "In ultricies viverra sed at hendrerit drogon nunc scelerisque nisl pellentesque et dignissim at aenean tempor adipiscing eget mi diam at tempus.",
-    logo: "/images/venture-logo.svg",
-    bgColor: "bg-[#2F81F7]",
-    illustration: "/images/venture-workspace.svg",
+      "A legal-help marketplace for Bangladesh: a free AI intake chat for the public, a token-gated case pipeline for lawyers, and one Supabase backend holding both sides together.",
+    logo: "/aingpt/aingpt-logo.png",
+    bgColor: "bg-[#1E7A5A]",
+    illustration: "/aingpt/images/my-cases.jpg",
     overview:
-      "In ultricies viverra sed at hendrerit drogon nunc scelerisque nisl pellentesque et dignissim at aenean tempor adipiscing eget mi diam at tempus, modernizing a dated workspace app used daily by internal teams.",
+      "Most people who need a lawyer in Bangladesh don't know where to start, and most lawyers don't have a reliable channel for qualified leads. AinGPT sits between them: a free AI chat triages a visitor's question, then routes them toward filing a formal case or browsing a directory of practicing lawyers, while lawyers work a case marketplace on the other side of the same database.",
     challenge:
-      "Nunc scelerisque nisl pellentesque et dignissim at aenean tempor, the existing interface had grown inconsistent over time, slowing teams down and making onboarding new users harder than it needed to be.",
+      "The product had to support two structurally different users, the public and licensed lawyers, from one codebase, with separate sign-up flows, separate dashboards, and a shared case object that both sides can see, act on, and chat about once a match is made.",
     solution:
-      "Rebuilt the core workspace flows around a single component system, simplifying navigation and cutting the number of steps needed to complete the most common tasks.",
+      "The landing page leads with a guest chat box rather than a pricing page or sign-up wall, so anyone can ask a legal question before creating an account. Signing up asks a visitor to declare a side up front, Normal User or Lawyer, each with its own dashboard. A filed case becomes something a lawyer can find in their Find Cases feed; accepting one costs tokens and unlocks a scoped chat thread between that lawyer and that client, with attachments moving through per-case storage. A separate admin surface rolls the whole marketplace up into the totals an operator would actually watch week to week.",
     highlights: [
       {
-        title: "Component system",
-        description: "A consistent set of reusable patterns that scaled across every screen in the app.",
+        title: "Free AI triage chat",
+        description: "No account required to ask a legal question, framed as informational guidance that funnels toward filing a case or browsing lawyers.",
+        color: "bg-[#1E7A5A]",
+      },
+      {
+        title: "Two-sided marketplace, one schema",
+        description: "Users and lawyers get separate dashboards, but share the same case object end to end.",
+        color: "bg-[#9C7A2E]",
+      },
+      {
+        title: "Token-based marketplace economy",
+        description: "Filing a case, proposing to a lawyer, and accepting a case each cost tokens and write to a ledger, keeping both sides deliberate.",
         color: "bg-[#2F81F7]",
       },
       {
-        title: "Simplified workflows",
-        description: "Reduced the steps required for the most common daily tasks.",
+        title: "Operator-facing analytics",
+        description: "An admin dashboard tracks users, active lawyers, chat volume and content library size with live trend charts.",
         color: "bg-[#FFC224]",
+      },
+    ],
+    impact: [
+      { area: "Access to legal guidance", before: "Word-of-mouth referrals, no upfront guidance", after: "Free AI triage chat available instantly, no signup" },
+      { area: "Lawyer lead generation", before: "Informal referral networks", after: "Structured case marketplace with token-gated proposals" },
+      { area: "Case handoff", before: "Phone calls and paperwork outside any system", after: "Scoped in-app chat thread created automatically on acceptance" },
+      { area: "Platform oversight", before: "No centralized view of usage", after: "Admin dashboard tracking growth, chat volume and content mix" },
+    ],
+    gallery: [
+      {
+        src: "/aingpt/images/landing.jpg",
+        alt: "AinGPT landing page with guest AI chat box, feature grid, and Free/Bronze/Gold pricing tiers",
+        caption: "Guest chat input above the fold, with Free / Bronze / Gold pricing tiers below.",
+      },
+      {
+        src: "/aingpt/images/auth.jpg",
+        alt: "Login and signup modal with a toggle between Normal User and Lawyer roles",
+        caption: "One modal, two roles: the Lawyer path collects a Bar ID, practice areas and consultation fee before it reaches Supabase Auth.",
+      },
+      {
+        src: "/aingpt/images/chat.jpg",
+        alt: "AI legal chat interface with a user question about small claims filing and an AI response",
+        caption: "Free-tier chat stays general and ends with an offer to search the lawyer directory, a funnel rather than a substitute for counsel.",
+      },
+      {
+        src: "/aingpt/images/lawyer-directory.jpg",
+        alt: "Lawyer directory listing showing a lawyer card with practice areas, experience, and a propose button",
+        caption: "Card view: availability badge, practice-area tags, years of experience and a token-priced Propose action.",
+      },
+      {
+        src: "/aingpt/images/lawyer-profile.jpg",
+        alt: "Full lawyer profile page with experience, consultation fee, average rating, chamber and education sections",
+        caption: "Full profile: experience, fee, rating, chamber and practice, and education sourced straight from Supabase.",
+      },
+      {
+        src: "/aingpt/images/find-cases.jpg",
+        alt: "Lawyer's Find Cases page listing a public property dispute case with an Accept button costing 5 tokens",
+        caption: "The exact case filed on the user side, now visible to lawyers with an Accept (5 tokens) action.",
+      },
+      {
+        src: "/aingpt/images/admin.jpg",
+        alt: "Admin dashboard with total users, active lawyers, chat sessions and content items, plus growth trend and content distribution charts",
+        caption: "Platform totals, a growth-trend line chart and a content-mix breakdown, built with Recharts.",
       },
     ],
   },

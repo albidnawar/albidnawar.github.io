@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AinGPT Case Study</title>
+<meta name="description" content="A two-sided legal-tech marketplace pairing AI triage chat with a token-gated lawyer network, built on Next.js and Supabase.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F3EA;
+    --paper-raised:#FFFFFF;
+    --ink:#191C16;
+    --ink-soft:#4B5045;
+    --line:#DEDACB;
+    --line-strong:#C9C4AF;
+    --accent:#1E7A5A;
+    --accent-ink:#0F4A36;
+    --accent-soft:#DCEEE3;
+    --gold:#9C7A2E;
+    --gold-soft:#F1E7CC;
+    --shadow: 0 1px 2px rgba(25,28,22,0.04), 0 8px 24px -12px rgba(25,28,22,0.18);
+    --radius: 10px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#15170F;
+      --paper-raised:#1D2016;
+      --ink:#EDE9DA;
+      --ink-soft:#B4AF9C;
+      --line:#33362A;
+      --line-strong:#464A3A;
+      --accent:#3FBE8B;
+      --accent-ink:#8FE0BC;
+      --accent-soft:#1E2E24;
+      --gold:#D3B356;
+      --gold-soft:#2C2716;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -14px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15170F;
+    --paper-raised:#1D2016;
+    --ink:#EDE9DA;
+    --ink-soft:#B4AF9C;
+    --line:#33362A;
+    --line-strong:#464A3A;
+    --accent:#3FBE8B;
+    --accent-ink:#8FE0BC;
+    --accent-soft:#1E2E24;
+    --gold:#D3B356;
+    --gold-soft:#2C2716;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -14px rgba(0,0,0,0.6);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    line-height:1.6;
+    padding:0 20px;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;}
+  h1,h2,h3{
+    font-family:'Source Serif 4',ui-serif,Georgia,'Times New Roman',serif;
+    color:var(--ink);
+    font-weight:600;
+    line-height:1.15;
+    text-wrap:balance;
+    margin:0;
+  }
+  .mono{
+    font-family:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+  }
+  a{color:var(--accent-ink);}
+
+  .wrap{max-width:760px;margin:0 auto;padding-block:56px 96px;}
+
+  /* ---------- Docket header ---------- */
+  .docket{
+    border:1px solid var(--line-strong);
+    border-radius:var(--radius);
+    background:var(--paper-raised);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    margin-bottom:56px;
+  }
+  .docket-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 24px;
+    background:var(--accent-soft);
+    border-bottom:1px solid var(--line-strong);
+  }
+  .docket-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+    font-weight:600;
+  }
+  .docket-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+  }
+  .docket-body{padding:32px 28px 28px;}
+  .docket-title{font-size:clamp(2.1rem,6vw,3rem);}
+  .docket-tagline{
+    margin-top:10px;
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .docket-meta{
+    margin-top:26px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:18px;
+    border-top:1px dashed var(--line-strong);
+    padding-top:20px;
+  }
+  .docket-meta dt{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--ink-soft);
+    margin-bottom:5px;
+  }
+  .docket-meta dd{margin:0;font-weight:600;font-size:0.95rem;}
+  .status-chip{
+    display:inline-flex;align-items:center;gap:6px;
+    font-weight:600;
+  }
+  .status-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block;}
+
+  /* ---------- Sections ---------- */
+  section{margin-top:64px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .eyebrow::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line-strong);
+  }
+  section h2{font-size:1.65rem;margin-bottom:16px;}
+  section p{margin:0 0 14px;max-width:66ch;}
+  section p:last-child{margin-bottom:0;}
+  .lede{font-size:1.12rem;color:var(--ink-soft);}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:620px){.grid-2{grid-template-columns:1fr;}}
+
+  .feature-card{
+    border:1px solid var(--line);
+    background:var(--paper-raised);
+    border-radius:var(--radius);
+    padding:18px 20px;
+  }
+  .feature-card h3{font-size:1.02rem;font-family:'Inter';font-weight:700;margin-bottom:6px;}
+  .feature-card p{font-size:0.92rem;color:var(--ink-soft);margin:0;}
+
+  /* ---------- Figures ---------- */
+  figure{margin:26px 0 0;}
+  figure img{
+    width:100%;
+    display:block;
+    border-radius:var(--radius);
+    border:1px solid var(--line-strong);
+    box-shadow:var(--shadow);
+  }
+  figcaption{
+    margin-top:10px;
+    font-size:0.86rem;
+    color:var(--ink-soft);
+    display:flex;
+    gap:10px;
+    align-items:baseline;
+  }
+  figcaption .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--accent-ink);
+    background:var(--accent-soft);
+    padding:2px 7px;
+    border-radius:4px;
+    flex-shrink:0;
+  }
+
+  /* ---------- Timeline / flow ---------- */
+  .flow{
+    border-left:2px solid var(--line-strong);
+    padding-left:22px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    margin-top:8px;
+  }
+  .flow-step{position:relative;}
+  .flow-step::before{
+    content:attr(data-n);
+    position:absolute;
+    left:-33px;
+    top:0;
+    width:22px;height:22px;
+    border-radius:50%;
+    background:var(--paper-raised);
+    border:2px solid var(--accent);
+    color:var(--accent-ink);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:600;
+  }
+  .flow-step h3{font-size:0.98rem;font-family:'Inter';font-weight:700;margin-bottom:4px;}
+  .flow-step p{font-size:0.92rem;color:var(--ink-soft);margin:0;}
+
+  /* ---------- Stack chips ---------- */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .chip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    padding:5px 11px;
+    border-radius:999px;
+    border:1px solid var(--line-strong);
+    background:var(--paper-raised);
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Table ---------- */
+  table{width:100%;border-collapse:collapse;margin-top:8px;font-size:0.9rem;}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);}
+  th{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+  td.mono{font-size:0.85rem;}
+  .tbl-wrap{overflow-x:auto;}
+
+  /* ---------- Callout ---------- */
+  .callout{
+    border:1px solid var(--gold);
+    background:var(--gold-soft);
+    border-radius:var(--radius);
+    padding:16px 18px;
+    font-size:0.92rem;
+    color:var(--ink);
+    margin-top:18px;
+  }
+  .callout strong{color:var(--accent-ink);}
+
+  footer{
+    margin-top:80px;
+    padding-top:24px;
+    border-top:1px solid var(--line-strong);
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="docket">
+    <div class="docket-top">
+      <span class="docket-label">Case Study</span>
+      <span class="docket-num">FILE NO. AGP&#8209;2026&#8209;001</span>
+    </div>
+    <div class="docket-body">
+      <h1 class="docket-title">AinGPT</h1>
+      <p class="docket-tagline">A legal-help marketplace for Bangladesh: an AI intake chat for the public, a token-gated case pipeline for lawyers, and one Supabase backend holding both sides together.</p>
+      <dl class="docket-meta">
+        <div>
+          <dt>Practice Area</dt>
+          <dd>Legal&#8209;tech marketplace</dd>
+        </div>
+        <div>
+          <dt>Platform</dt>
+          <dd>Web &middot; Next.js 14</dd>
+        </div>
+        <div>
+          <dt>Backend</dt>
+          <dd>Supabase</dd>
+        </div>
+        <div>
+          <dt>Status</dt>
+          <dd class="status-chip"><span class="status-dot"></span>Live on Vercel</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <section>
+    <div class="eyebrow">Brief</div>
+    <h2>Two audiences, one case file</h2>
+    <p class="lede">Most people who need a lawyer in Bangladesh don't know where to start, and most lawyers don't have a reliable channel for qualified leads. AinGPT sits between them: a free AI chat triages a visitor's question, then routes them toward filing a formal case or browsing a directory of practicing lawyers &mdash; while lawyers work a case marketplace on the other side of the same database.</p>
+    <p>The product had to support two structurally different users (the public and licensed lawyers) from one codebase, with separate sign-up flows, separate dashboards, and a shared case object that both sides can see, act on, and chat about once a match is made.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Entry Point</div>
+    <h2>Free AI chat, no account required</h2>
+    <p>The landing page leads with a guest chat box rather than a pricing page or a sign-up wall &mdash; anyone can type a legal question before deciding whether to create an account. Signing up asks a visitor to declare a side up front: <strong>Normal User</strong> or <strong>Lawyer</strong>, each with its own form, its own Supabase-backed session, and its own dashboard on the other side of auth.</p>
+    <figure>
+      <img src="images/landing.jpg" alt="AinGPT landing page with guest AI chat box, feature grid, and Free/Bronze/Gold pricing tiers">
+      <figcaption><span class="tag">Landing</span> Guest chat input above the fold, pricing tiers (Free / Bronze &#2547;500 / Gold &#2547;1000) below.</figcaption>
+    </figure>
+    <figure>
+      <img src="images/auth.jpg" alt="Login and signup modal with a toggle between Normal User and Lawyer roles">
+      <figcaption><span class="tag">Auth</span> One modal, two roles &mdash; the Lawyer path collects a Bar ID, practice areas, chamber address and consultation fee before it ever reaches Supabase Auth.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="eyebrow">User Dashboard</div>
+    <h2>Chat, then act on it</h2>
+    <p>Once inside, a user's free-tier chat gives general guidance and a nudge toward finding a lawyer &mdash; it's explicitly framed as informational, not legal advice. Paid tiers unlock an Advanced Chat with document analysis; every tier can file a case, and every filed case becomes something a lawyer can find.</p>
+    <figure>
+      <img src="images/chat.jpg" alt="AI legal chat interface with a user question about small claims filing and an AI response">
+      <figcaption><span class="tag">Free AI Chat</span> Responses stay general and end with an offer to search the lawyer directory &mdash; the chat is a funnel, not a substitute for counsel.</figcaption>
+    </figure>
+    <div class="grid-2">
+      <div class="feature-card">
+        <h3>My Cases</h3>
+        <p>File a case (thana, dhara/section, register date, involved parties) for a flat token cost, then track it through Pending &rarr; Active &rarr; Completed / On Hold.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Lawyer Directory</h3>
+        <p>Filter by practice area and location, read a lawyer's experience, fee and credentials, then propose a case for a small token spend.</p>
+      </div>
+    </div>
+    <figure>
+      <img src="images/my-cases.jpg" alt="My Cases dashboard showing a filed property boundary dispute case with status Pending">
+      <figcaption><span class="tag">Case Filing</span> A filed case with thana, section number, register date and a short description &mdash; the same record a lawyer sees from their side.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="eyebrow">Lawyer Marketplace</div>
+    <h2>Verified profiles, priced consultations</h2>
+    <p>Lawyer profiles carry the credibility signals a client actually checks before hiring someone: years of experience, consultation fee in BDT, chamber address, education history, and bilingual practice-area tags (English with the original Bengali term alongside it, since that's how the profession is actually described locally).</p>
+    <figure>
+      <img src="images/lawyer-directory.jpg" alt="Lawyer directory listing showing a lawyer card with practice areas, experience, and a propose button">
+      <figcaption><span class="tag">Directory</span> Card view: availability badge, practice-area tags, years of experience, and a token-priced "Propose" action.</figcaption>
+    </figure>
+    <figure>
+      <img src="images/lawyer-profile.jpg" alt="Full lawyer profile page with experience, consultation fee, average rating, chamber and education sections">
+      <figcaption><span class="tag">Profile</span> Full profile: experience, fee, rating, chamber &amp; practice, and an education section sourced straight from Supabase.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="eyebrow">Lawyer Dashboard</div>
+    <h2>The same case, from the other side</h2>
+    <p>A public case posting shows up in every lawyer's <strong>Find Cases</strong> feed, filterable by case type and location. Accepting one costs tokens and creates a <span class="mono">case_acceptances</span> row; that acceptance is what unlocks a scoped chat thread between that lawyer and that client.</p>
+    <figure>
+      <img src="images/find-cases.jpg" alt="Lawyer's Find Cases page listing a public property dispute case with an Accept button costing 5 tokens">
+      <figcaption><span class="tag">Find Cases</span> The exact case filed on the user side, now visible to lawyers with an "Accept (5 tokens)" action.</figcaption>
+    </figure>
+    <div class="flow">
+      <div class="flow-step" data-n="1">
+        <h3>Client files a case</h3>
+        <p>Case row created in <span class="mono">cases</span>, optionally marked public.</p>
+      </div>
+      <div class="flow-step" data-n="2">
+        <h3>Lawyer accepts</h3>
+        <p>Token spend logged in <span class="mono">lawyer_tokens</span>; a <span class="mono">case_acceptances</span> row links lawyer &harr; case.</p>
+      </div>
+      <div class="flow-step" data-n="3">
+        <h3>Conversation opens</h3>
+        <p>A <span class="mono">chat_conversations</span> row is created against that exact acceptance &mdash; one thread, two participants.</p>
+      </div>
+      <div class="flow-step" data-n="4">
+        <h3>Files move in-thread</h3>
+        <p>Attachments upload to a per-case folder in the <span class="mono">chat-files</span> storage bucket.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Operations</div>
+    <h2>An admin view of the whole marketplace</h2>
+    <p>A separate admin surface rolls the platform up into totals and trends &mdash; users, active lawyers, chat volume, content library size &mdash; the numbers an operator would actually watch week to week.</p>
+    <figure>
+      <img src="images/admin.jpg" alt="Admin dashboard with total users, active lawyers, chat sessions and content items, plus growth trend and content distribution charts">
+      <figcaption><span class="tag">Admin</span> Platform totals, a growth-trend line chart and a content-mix breakdown, built with Recharts.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="eyebrow">Under The Hood</div>
+    <h2>Architecture</h2>
+    <p>Next.js App Router handles both UI and API routes; every write that touches money, tokens or another party's data goes through a server route using Supabase's service-role client, never the browser client directly. Next.js middleware gates <span class="mono">/user_dashboard</span> and <span class="mono">/lawyer_dashboard</span> on an active Supabase session and bounces anyone else back to the landing page.</p>
+    <div class="chips">
+      <span class="chip">Next.js 14 · App Router</span>
+      <span class="chip">TypeScript</span>
+      <span class="chip">Supabase Postgres</span>
+      <span class="chip">Supabase Auth</span>
+      <span class="chip">Supabase Storage</span>
+      <span class="chip">Tailwind CSS</span>
+      <span class="chip">Radix UI</span>
+      <span class="chip">Recharts</span>
+      <span class="chip">Vercel</span>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Storage bucket</th><th>Access</th><th>Holds</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">user-profile</td><td>Public</td><td>User &amp; lawyer avatars, keyed by <span class="mono">user_id</span></td></tr>
+          <tr><td class="mono">case-documents</td><td>Service role only</td><td>Filed-case attachments</td></tr>
+          <tr><td class="mono">chat-files</td><td>Service role only</td><td>Attachments sent inside a case conversation</td></tr>
+          <tr><td class="mono">advanced-chat</td><td>Service role only</td><td>Documents uploaded to the paid-tier Advanced Chat</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:22px;">The schema runs to roughly twenty tables: <span class="mono">users</span> and <span class="mono">lawyers</span> as the two identity tables (each with its own <span class="mono">auth_user_id</span> back to Supabase Auth), <span class="mono">cases</span> / <span class="mono">case_acceptances</span> / <span class="mono">case_requests</span> for the marketplace pipeline, <span class="mono">chat_conversations</span> / <span class="mono">chat_messages</span> for case-scoped messaging, and token-ledger tables (<span class="mono">user_tokens</span>, <span class="mono">lawyer_tokens</span>) that log every spend rather than just decrementing a balance.</p>
+
+    <div class="callout">
+      <strong>Token economy, not just a paywall.</strong> Subscriptions (Free / Bronze / Gold) gate chat depth and document limits, but the marketplace itself runs on a separate token balance: filing a case, proposing to a lawyer, and a lawyer accepting a case each cost tokens and write a row to a ledger table &mdash; so both sides have an incentive to act deliberately rather than mass-spam the other.
+    </div>
+  </section>
+
+  <footer>
+    <span>AinGPT &mdash; case study</span>
+    <span>Written 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>

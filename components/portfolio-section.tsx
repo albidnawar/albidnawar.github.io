@@ -53,12 +53,14 @@ export function PortfolioSection() {
                 </a>
               </div>
 
-              <div className={`${project.bgColor} relative overflow-hidden aspect-square self-stretch md:self-center`}>
+              <div
+                className={`${project.bgColor} relative overflow-hidden aspect-square self-stretch md:self-center p-6 md:p-10`}
+              >
                 <Image
                   src={project.illustration || "/placeholder.svg"}
                   alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                  className="object-contain p-2 transition-transform duration-500 ease-out group-hover:scale-105"
                 />
               </div>
             </div>

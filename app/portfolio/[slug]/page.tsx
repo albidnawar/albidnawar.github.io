@@ -73,9 +73,14 @@ export default async function CaseStudyPage({
           </p>
 
           <div
-            className={`${project.bgColor} relative overflow-hidden aspect-square border-[3px] border-black rounded-[32px] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]`}
+            className={`${project.bgColor} relative overflow-hidden aspect-square border-[3px] border-black rounded-[32px] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8 md:p-14`}
           >
-            <Image src={project.illustration || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
+            <Image
+              src={project.illustration || "/placeholder.svg"}
+              alt={project.title}
+              fill
+              className="object-contain p-2"
+            />
           </div>
         </div>
       </section>
@@ -112,6 +117,24 @@ export default async function CaseStudyPage({
         </div>
       </section>
 
+      {project.gallery && (
+        <section className="container mx-auto px-4 py-8 md:py-12">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-xl md:text-2xl font-bold mb-6 text-[#0B0B0B]">A closer look</h2>
+            <div className="grid gap-6">
+              {project.gallery.map((item) => (
+                <div key={item.src} className="bg-white border-[3px] border-black rounded-[32px] overflow-hidden">
+                  <div className="relative aspect-[16/9] bg-[#F5F3EC]">
+                    <Image src={item.src || "/placeholder.svg"} alt={item.alt} fill className="object-contain p-3 md:p-4" />
+                  </div>
+                  <p className="px-6 py-5 text-sm md:text-base text-[#393939] leading-relaxed">{item.caption}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {project.impact && (
         <section className="container mx-auto px-4 py-8 md:py-12">
           <div className="max-w-5xl mx-auto bg-white border-[3px] border-black rounded-[32px] p-8 md:p-12">
@@ -122,7 +145,9 @@ export default async function CaseStudyPage({
                   <tr className="bg-black text-white">
                     <th className="text-left text-sm md:text-base font-semibold px-4 py-3 rounded-l-xl">Operational area</th>
                     <th className="text-left text-sm md:text-base font-semibold px-4 py-3">Legacy workflow</th>
-                    <th className="text-left text-sm md:text-base font-semibold px-4 py-3 rounded-r-xl">With U-lens</th>
+                    <th className="text-left text-sm md:text-base font-semibold px-4 py-3 rounded-r-xl">
+                      With {project.title.split(":")[0]}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
